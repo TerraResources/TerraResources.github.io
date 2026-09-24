@@ -1,0 +1,36 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  heroClass?: string;
+  asideClass?: string;
+}
+
+const { eyebrow, title, intro, heroClass, asideClass } = Astro.props;
+---
+
+<section class:list={['page-hero', heroClass]}>
+  <div class="container page-hero__grid">
+    <div class="reveal">
+      <span class="eyebrow">{eyebrow}</span>
+      <h1 class="display-title">{title}</h1>
+      <p class="section-intro">{intro}</p>
+    </div>
+    <div class:list={['page-hero__aside-slot', asideClass]}>
+      <slot name="aside" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-hero__aside-slot {
+    min-width: 0;
+  }
+
+  @media (max-width: 900px) {
+    .page-hero__aside-slot {
+      max-width: 620px;
+    }
+  }
+</style>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="wayfinder-junction-title wayfinder-junction-description">
+  <title id="wayfinder-junction-title">TerraResources wayfinder junction mark</title>
+  <desc id="wayfinder-junction-description">A clay route branches through a lime waypoint on a deep green field, suggesting fieldwork and a connected workflow.</desc>
+  <rect x="2" y="2" width="60" height="60" rx="17" fill="#17342e"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m14 47 11-11 10 4 13-19" stroke="#dc7658" stroke-width="4.5"/>
+    <path d="M25 36V26l10-9" stroke="#d9ed72" stroke-width="4.5"/>
+  </g>
+  <path d="m25 29 6 6-6 6-6-6 6-6Z" fill="#d9ed72"/>
+  <path d="m50 16-7 4 5 5 2-9Z" fill="#dc7658"/>
+</svg>

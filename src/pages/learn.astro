@@ -1,0 +1,328 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<BaseLayout
+  title="Study workflows"
+  description="Short, practical study workflows for BSc Geography: find sources, take notes, work with maps, and turn evidence into an argument."
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Study workflows"
+      title="Study, without the hunting."
+      intro="The useful part of Geography is not collecting tabs. It is noticing a pattern, finding evidence, and explaining why it matters. These workflows keep the busywork out of the way."
+      heroClass="study-hero"
+      asideClass="study-hero__aside"
+    >
+      <div class="study-loop reveal reveal--delay" slot="aside">
+        <div><span>01</span><strong>Find</strong><small>A source or place</small></div>
+        <div><span>02</span><strong>Record</strong><small>What you observe</small></div>
+        <div><span>03</span><strong>Connect</strong><small>Patterns and causes</small></div>
+        <div><span>04</span><strong>Explain</strong><small>Evidence and limits</small></div>
+      </div>
+    </PageHero>
+
+    <section class="section workflow-section">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Start with the task"
+          title="Three workflows worth keeping."
+          intro="Use the smallest useful process. Add complexity only when the question asks for it."
+        />
+        <div class="workflow-grid">
+          <article>
+            <span class="workflow-number">01</span>
+            <h2>Write an evidence-based answer</h2>
+            <p>Move from a vague topic to a claim you can support, then keep the citation details as you go.</p>
+            <ol>
+              <li>Write the question in your own words.</li>
+              <li>Find one strong starting source in the source finder.</li>
+              <li>Record the author, year, claim, and page or link.</li>
+              <li>Check the reference against your module brief.</li>
+            </ol>
+            <a class="text-link" href="/sources/">Open the source finder</a>
+          </article>
+          <article>
+            <span class="workflow-number">02</span>
+            <h2>Take usable lecture notes</h2>
+            <p>Give the page a predictable structure so a future version of you can find the important bit.</p>
+            <ol>
+              <li>Start with the lecture header shortcut.</li>
+              <li>Use a sub-topic for each distinct idea.</li>
+              <li>Mark diagrams you need to recreate later.</li>
+              <li>Use F1 when you forget a shortcut.</li>
+            </ol>
+            <a class="text-link" href="/resources/#word-toolkit">Open the Word toolkit</a>
+          </article>
+          <article>
+            <span class="workflow-number">03</span>
+            <h2>Turn fieldwork into evidence</h2>
+            <p>Separate the observation from the interpretation so the argument has something solid to stand on.</p>
+            <ol>
+              <li>Record coordinates and accuracy.</li>
+              <li>Describe the pattern before explaining it.</li>
+              <li>Add an alternative explanation or limitation.</li>
+              <li>Use the next-question prompt to plan the return.</li>
+            </ol>
+            <a class="text-link" href="/resources/#field-notes">Open the fieldwork tools</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--sage study-tools-section">
+      <div class="container">
+        <div class="section-heading-row">
+          <SectionHeading
+            eyebrow="Keep the useful parts close"
+            title="The four pages you will use most."
+            intro="Everything here is maintained as a small workflow hub rather than a general-purpose content library."
+          />
+        </div>
+        <div class="study-link-grid">
+          <a href="/resources/"><span>01</span><strong>Tools</strong><small>Word shortcuts, maps, and templates</small></a>
+          <a href="/sources/"><span>02</span><strong>Sources</strong><small>Academic search and trusted directories</small></a>
+          <a href="/referencing/"><span>03</span><strong>Referencing</strong><small>Plymouth guidance and citation checks</small></a>
+          <a href="/about/"><span>04</span><strong>About</strong><small>What belongs in this workspace</small></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container study-note">
+        <div><span class="eyebrow">Keep this honest</span><h2>Use the official brief for content.</h2></div>
+        <p>
+          Module readings, assessment criteria, deadlines, and VLE materials belong in
+          Plymouth’s systems. TerraResources is the shortcut layer around them—not a
+          replacement for them.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .study-loop {
+    display: grid;
+    gap: 0;
+    overflow: hidden;
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .study-loop > div {
+    min-height: 150px;
+    padding: 22px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .study-loop > div:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .study-loop > div:nth-child(n + 3) {
+    border-bottom: 0;
+  }
+
+  .study-loop > div:nth-child(3) {
+    background: #dce7d8;
+  }
+
+  .study-loop > div:nth-child(4) {
+    background: #c7e0e4;
+  }
+
+  .study-loop span,
+  .study-loop strong,
+  .study-loop small {
+    display: block;
+  }
+
+  .study-loop span {
+    color: var(--moss);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .study-loop strong {
+    margin-top: 28px;
+    color: var(--ink-strong);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .study-loop small {
+    color: var(--ink-soft);
+    font-size: 0.7rem;
+  }
+
+  .workflow-section {
+    background: var(--white);
+  }
+
+  .workflow-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .workflow-grid article {
+    display: flex;
+    min-height: 500px;
+    padding: 25px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--paper);
+    flex-direction: column;
+  }
+
+  .workflow-number {
+    color: var(--moss);
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .workflow-grid h2 {
+    margin: 55px 0 11px;
+    color: var(--ink-strong);
+    font-size: 1.45rem;
+    font-weight: 650;
+    letter-spacing: -0.045em;
+    line-height: 1.1;
+  }
+
+  .workflow-grid p {
+    margin-bottom: 0;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+
+  .workflow-grid ol {
+    margin: 24px 0;
+    padding-left: 20px;
+    color: var(--ink-strong);
+    font-size: 0.8rem;
+  }
+
+  .workflow-grid li + li {
+    margin-top: 7px;
+  }
+
+  .workflow-grid .text-link {
+    margin-top: auto;
+    font-size: 0.76rem;
+  }
+
+  .study-tools-section {
+    background: var(--white);
+  }
+
+  .study-link-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .study-link-grid a {
+    display: flex;
+    min-height: 170px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--paper);
+    flex-direction: column;
+    transition: transform 180ms var(--ease), box-shadow 180ms ease;
+  }
+
+  .study-link-grid a:hover {
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-4px);
+  }
+
+  .study-link-grid span {
+    color: var(--moss);
+    font-size: 0.63rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .study-link-grid strong {
+    margin-top: auto;
+    color: var(--ink-strong);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .study-link-grid small {
+    color: var(--ink-soft);
+    font-size: 0.69rem;
+  }
+
+  .study-note {
+    display: grid;
+    align-items: center;
+    gap: 70px;
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+
+  .study-note h2 {
+    margin-bottom: 0;
+    color: var(--ink-strong);
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 620;
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .study-note p {
+    margin-bottom: 0;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: 900px) {
+    .study-note {
+      grid-template-columns: 1fr;
+    }
+
+    .study-loop {
+      max-width: 620px;
+    }
+
+    .workflow-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .workflow-grid article {
+      min-height: 0;
+    }
+
+    .workflow-grid .text-link {
+      margin-top: 10px;
+    }
+
+    .study-link-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .study-link-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

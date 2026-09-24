@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Page Not Found" description="The page you requested could not be found." noindex>
+  <Header />
+  <main id="main-content" class="not-found">
+    <div class="container not-found__grid">
+      <div>
+        <span class="eyebrow">Error 404</span>
+        <h1>Off the map.</h1>
+        <p>
+          This route is not mapped in the current workbench. Try the toolkit or source finder instead.
+        </p>
+        <div class="not-found__actions">
+          <a class="button button--primary" href="/">Return home</a>
+          <a class="button button--secondary" href="/sources/">Find a source</a>
+        </div>
+      </div>
+
+      <div class="not-found__graphic" aria-hidden="true">
+        <svg viewBox="0 0 440 330" fill="none">
+          <path d="M43 245 153 94l91 111 52-64 102 128" stroke="currentColor" stroke-width="2" stroke-dasharray="6 9" />
+          <path d="M43 245c53 36 102 30 151-4 48-33 89-31 126-7 32 21 59 30 78 7" stroke="currentColor" stroke-opacity=".25" />
+          <circle cx="153" cy="94" r="43" fill="#dce7d8" />
+          <circle cx="153" cy="94" r="13" fill="#285c4b" stroke="#17342e" stroke-width="3" />
+          <circle cx="43" cy="245" r="9" fill="#f7f5ed" stroke="#17342e" stroke-width="3" />
+          <path d="M296 141c21 2 39 9 53 22" stroke="#17342e" stroke-width="2" />
+          <text x="360" y="120" text-anchor="middle" fill="#17342e" font-family="Arial, sans-serif" font-size="18" font-weight="700">?</text>
+        </svg>
+        <div class="not-found__coordinate"><span>LAST KNOWN POSITION</span><strong>UNKNOWN</strong></div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    min-height: 72vh;
+    align-items: center;
+    padding: 130px 0 90px;
+  }
+
+  .not-found__grid {
+    display: grid;
+    align-items: center;
+    gap: clamp(55px, 9vw, 120px);
+    grid-template-columns: minmax(0, 0.9fr) minmax(400px, 1.1fr);
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    color: var(--ink-strong);
+    font-size: clamp(4rem, 9vw, 7.5rem);
+    font-weight: 620;
+    letter-spacing: -0.07em;
+    line-height: 0.9;
+  }
+
+  .not-found p {
+    max-width: 540px;
+    margin-bottom: 30px;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .not-found__graphic {
+    position: relative;
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    color: var(--moss);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .not-found__coordinate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+
+  .not-found__coordinate span {
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+  }
+
+  .not-found__coordinate strong {
+    color: var(--clay);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 800px) {
+    .not-found {
+      padding-top: 105px;
+    }
+
+    .not-found__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .not-found__graphic {
+      max-width: 520px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .not-found__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .not-found__graphic {
+      padding: 18px;
+    }
+  }
+</style>

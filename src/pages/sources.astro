@@ -1,0 +1,401 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FilterBar from '../components/FilterBar.astro';
+import EmptyState from '../components/EmptyState.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SourceCard from '../components/SourceCard.astro';
+import { sources, sourceCategories, sourceAnchors, startHereSourceIds } from '../data/sources';
+
+const startHere = startHereSourceIds
+  .map((sourceId) => sources.find((source) => source.id === sourceId))
+  .filter((source): source is (typeof sources)[number] => Boolean(source));
+---
+
+<BaseLayout
+  title="Source finder"
+  description="Find trustworthy academic, UK data, map, GIS, climate, and fieldwork sources for BSc Geography."
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Source finder"
+      title="Find a source. Keep the trail."
+      intro="A short route from ‘I need information about…’ to a source you can inspect, cite, and actually use in a Geography argument."
+      heroClass="source-hero"
+      asideClass="source-hero__aside"
+    >
+      <div class="source-hero__card reveal reveal--delay" slot="aside">
+        <span class="source-hero__card-label">START WITH PLYMOUTH</span>
+        <strong>Primo → search wider → check the source.</strong>
+        <p>Use the University catalogue first, then use the specialist directories below when you need breadth or data.</p>
+        <a href="https://primo.plymouth.ac.uk/nde/search?vid=44PLY_INST%3AUoP_NDE&lang=en&sortby=rank" target="_blank" rel="noopener noreferrer">
+          Open Library Search <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </PageHero>
+
+    <section class="section section--tight source-start-section">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Five useful starting points"
+          title="A shorter route through the research web."
+          intro="These links cover the jobs you will probably do most often: finding reading, checking access, searching scholarship, mapping a place, and locating UK data."
+        />
+        <div class="source-start-grid">
+          {
+            startHere.map((source) => (
+              <a id={sourceAnchors[source.id]} class="source-start-card" href={source.url} target="_blank" rel="noopener noreferrer">
+                <span>{source.category}</span>
+                <strong>{source.name}</strong>
+                <p>{source.useFor}</p>
+                <b aria-hidden="true">↗</b>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section source-directory" id="directory">
+      <div class="container">
+        <div class="library-heading">
+          <SectionHeading
+            eyebrow="The directory"
+            title="Find the right kind of source."
+            intro="Search by name, task, or category. Access labels are a guide, not a promise—always check your own login and licence terms."
+          />
+          <p class="resource-count" aria-live="polite" data-source-count>{sources.length} sources</p>
+        </div>
+
+        <FilterBar
+          searchLabel="Search sources"
+          placeholder="Search Scholar, maps, climate…"
+          categories={sourceCategories}
+          itemName="source"
+        />
+        <p class="source-logo-note">Icons use each provider’s favicon when available. The University of Plymouth pages share one family mark because they are subpages of the same library site.</p>
+
+        <div class="source-grid" data-source-grid>
+          {sources.map((source) => <SourceCard source={source} />)}
+        </div>
+
+        <EmptyState
+          title="No sources found"
+          message="Try a broader term or reset the category filter."
+        />
+      </div>
+    </section>
+
+    <section class="section section--sage source-quality-section">
+      <div class="container source-quality__grid">
+        <div>
+          <span class="eyebrow">Before you cite it</span>
+          <h2 class="section-title">A source is only useful if you can explain why.</h2>
+          <p>
+            Plymouth’s quality-of-information guidance is the right place to go when a
+            website looks convincing but you are not sure whether it is suitable academic
+            evidence.
+          </p>
+          <a class="text-link" href="https://plymouth.libguides.com/skills/qualityinfo" target="_blank" rel="noopener noreferrer">Read the quality checklist</a>
+        </div>
+        <ol class="quality-list">
+          <li><span>01</span><div><h3>What is it?</h3><p>Scholarly article, book, report, dataset, map, or website?</p></div></li>
+          <li><span>02</span><div><h3>Who made it?</h3><p>Author, organisation, date, methods, and any obvious bias.</p></div></li>
+          <li><span>03</span><div><h3>What does it add?</h3><p>Does it support the specific claim you are making?</p></div></li>
+          <li><span>04</span><div><h3>Can someone follow it?</h3><p>Keep the link, DOI, access date, and a useful note.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container source-next-step">
+        <div>
+          <span class="eyebrow">Found the source?</span>
+          <h2>Do not leave the reference until the end.</h2>
+          <p>Use the referencing guide to check the in-text citation, bibliography entry, and the style your module actually requires.</p>
+        </div>
+        <a class="button button--primary" href="/referencing/">Check referencing</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .source-hero__card {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: var(--radius-md);
+    background: var(--ink-strong);
+    color: white;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .source-hero__card::after {
+    position: absolute;
+    right: -100px;
+    bottom: -135px;
+    width: 270px;
+    height: 270px;
+    border: 1px solid rgba(217, 237, 114, 0.25);
+    border-radius: 50%;
+    box-shadow: 0 0 0 40px rgba(217, 237, 114, 0.06);
+    content: '';
+  }
+
+  .source-hero__card-label,
+  .source-hero__card strong,
+  .source-hero__card p,
+  .source-hero__card a {
+    position: relative;
+    z-index: 1;
+  }
+
+  .source-hero__card-label {
+    color: var(--lime);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+  }
+
+  .source-hero__card strong {
+    display: block;
+    max-width: 350px;
+    margin-top: 48px;
+    color: white;
+    font-size: clamp(1.7rem, 3vw, 2.55rem);
+    font-weight: 620;
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+  }
+
+  .source-hero__card p {
+    max-width: 390px;
+    margin: 17px 0 24px;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.86rem;
+  }
+
+  .source-hero__card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--lime);
+    font-size: 0.77rem;
+    font-weight: 800;
+  }
+
+  .source-start-section {
+    background: var(--white);
+  }
+
+  .source-start-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .source-start-card {
+    position: relative;
+    min-height: 220px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--paper);
+    transition: transform 180ms var(--ease), box-shadow 180ms ease, border-color 180ms ease;
+  }
+
+  .source-start-card:hover {
+    border-color: var(--line-dark);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-4px);
+  }
+
+  .source-start-card > span {
+    color: var(--moss);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .source-start-card strong {
+    display: block;
+    margin-top: 42px;
+    color: var(--ink-strong);
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  .source-start-card p {
+    margin: 10px 0 0;
+    color: var(--ink-soft);
+    font-size: 0.73rem;
+    line-height: 1.5;
+  }
+
+  .source-start-card b {
+    position: absolute;
+    right: 18px;
+    bottom: 16px;
+    color: var(--moss);
+    font-size: 1.1rem;
+  }
+
+  .source-directory {
+    background: var(--white);
+  }
+
+  .library-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .resource-count {
+    flex: none;
+    margin: 0 0 7px;
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    font-weight: 750;
+  }
+
+  .source-logo-note {
+    margin: -24px 0 40px;
+    color: var(--ink-soft);
+    font-size: 0.72rem;
+  }
+
+  .source-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .source-quality__grid {
+    display: grid;
+    align-items: start;
+    gap: clamp(50px, 9vw, 120px);
+    grid-template-columns: minmax(0, 0.85fr) minmax(380px, 1.15fr);
+  }
+
+  .source-quality__grid > div > p {
+    max-width: 550px;
+    color: var(--ink-soft);
+  }
+
+  .source-quality__grid .text-link {
+    margin-top: 12px;
+  }
+
+  .quality-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .quality-list li {
+    display: grid;
+    gap: 17px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(23, 52, 46, 0.16);
+    grid-template-columns: 42px 1fr;
+  }
+
+  .quality-list li:first-child {
+    padding-top: 0;
+  }
+
+  .quality-list li > span {
+    color: var(--moss);
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .quality-list h3 {
+    margin-bottom: 3px;
+    color: var(--ink-strong);
+    font-size: 1.1rem;
+  }
+
+  .quality-list p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+  }
+
+  .source-next-step {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: clamp(30px, 5vw, 55px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+  }
+
+  .source-next-step h2 {
+    margin-bottom: 10px;
+    color: var(--ink-strong);
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 620;
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+  }
+
+  .source-next-step p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 1000px) {
+    .source-start-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .source-quality__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .source-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .library-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .resource-count {
+      margin-bottom: 0;
+    }
+
+    .source-start-grid,
+    .source-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .source-next-step {
+      align-items: stretch;
+      flex-direction: column;
+    }
+  }
+</style>

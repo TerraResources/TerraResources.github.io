@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="Privacy and independence"
+  description="Privacy, data handling, and independence information for the TerraResources Geography workflow hub."
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Privacy and independence"
+      title="A small site with a clear data boundary."
+      intro="TerraResources is a static study-work hub. It does not need an account, and it does not collect coursework or reading histories."
+      heroClass="privacy-hero"
+      asideClass="privacy-hero__aside"
+    >
+      <div class="privacy-hero__card reveal reveal--delay" slot="aside">
+        <span>DEFAULT</span>
+        <strong>No accounts. No analytics. No forms.</strong>
+        <p>Search and filtering happen in your browser; the site does not send those queries to a server.</p>
+      </div>
+    </PageHero>
+
+    <section class="section privacy-content">
+      <div class="container privacy-grid">
+        <aside class="privacy-nav" aria-label="On this page">
+          <strong>On this page</strong>
+          <a href="#site-data">Site data</a>
+          <a href="#downloads">Downloads</a>
+          <a href="#independence">Independence</a>
+          <a href="#contact">Contact</a>
+        </aside>
+
+        <div class="privacy-copy">
+          <section id="site-data">
+            <span class="eyebrow">Site data</span>
+            <h2>What this site stores</h2>
+            <p>
+              TerraResources has no user accounts, comment forms, analytics scripts, or
+              advertising trackers. The search and category filters use browser-side
+              JavaScript and do not submit your search terms to a remote service.
+            </p>
+            <p>
+              The site is hosted through GitHub Pages. Like any web host, GitHub may
+              process ordinary request information such as an IP address, user agent,
+              and requested URL in order to serve the site.
+            </p>
+          </section>
+
+          <section id="downloads">
+            <span class="eyebrow">Downloads and external links</span>
+            <h2>What leaves the site</h2>
+            <p>
+              Source links take you to third-party websites such as Google Scholar,
+              Crossref, OpenStreetMap, and the University of Plymouth Library. Those
+              services have their own privacy policies and access rules.
+            </p>
+            <p>
+              The AutoHotkey tools run locally. The launcher and map shortcuts can open
+              external websites when you press their configured keys. The CSV and text
+              templates remain on your device; this site does not upload GPS notes or
+              fieldwork data.
+            </p>
+          </section>
+
+          <section id="independence">
+            <span class="eyebrow">Independence</span>
+            <h2>Not a University service</h2>
+            <p>
+              TerraResources is an independent student workflow project. It is not
+              affiliated with, operated by, or endorsed by the University of Plymouth.
+              Official module guidance, library access, VLE materials, and assessment
+              requirements should always come from the University.
+            </p>
+          </section>
+
+          <section id="contact">
+            <span class="eyebrow">Questions</span>
+            <h2>Contact or report a problem</h2>
+            <p>
+              Found a broken link, an unsafe download, or an incorrect source? Open an
+              issue in the project repository so the entry can be checked and corrected.
+            </p>
+            <a class="button button--primary" href="https://github.com/TerraResources/TerraResources.github.io/issues" target="_blank" rel="noopener noreferrer">
+              Open a repository issue
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 15 15 5M8 5h7v7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .privacy-hero__card {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: var(--radius-md);
+    background: var(--moss);
+    color: white;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .privacy-hero__card::after {
+    position: absolute;
+    right: -100px;
+    bottom: -120px;
+    width: 270px;
+    height: 270px;
+    border: 1px solid rgba(217, 237, 114, 0.25);
+    border-radius: 50%;
+    content: '';
+  }
+
+  .privacy-hero__card > span,
+  .privacy-hero__card > strong,
+  .privacy-hero__card > p {
+    position: relative;
+    z-index: 1;
+  }
+
+  .privacy-hero__card > span {
+    color: var(--lime);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+  }
+
+  .privacy-hero__card > strong {
+    display: block;
+    max-width: 360px;
+    margin-top: 48px;
+    color: white;
+    font-size: clamp(1.7rem, 3vw, 2.45rem);
+    font-weight: 620;
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+  }
+
+  .privacy-hero__card > p {
+    max-width: 380px;
+    margin: 17px 0 0;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.86rem;
+  }
+
+  .privacy-content {
+    background: var(--white);
+  }
+
+  .privacy-grid {
+    display: grid;
+    align-items: start;
+    gap: clamp(45px, 9vw, 120px);
+    grid-template-columns: minmax(160px, 0.35fr) minmax(0, 1fr);
+  }
+
+  .privacy-nav {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--paper);
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .privacy-nav strong {
+    margin-bottom: 4px;
+    color: var(--moss);
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .privacy-nav a {
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    font-weight: 650;
+  }
+
+  .privacy-nav a:hover {
+    color: var(--ink-strong);
+  }
+
+  .privacy-copy {
+    max-width: 760px;
+  }
+
+  .privacy-copy section {
+    padding: 0 0 48px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 100px;
+  }
+
+  .privacy-copy section:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .privacy-copy h2 {
+    margin-bottom: 14px;
+    color: var(--ink-strong);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 620;
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+  }
+
+  .privacy-copy p {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+
+  .privacy-copy .button {
+    margin-top: 8px;
+  }
+
+  @media (max-width: 700px) {
+    .privacy-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .privacy-nav {
+      position: static;
+    }
+  }
+</style>

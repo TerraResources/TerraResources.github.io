@@ -1,0 +1,176 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div class="footer-brand">
+      <a class="footer-logo" href="/" aria-label="TerraResources home">
+        <img src="/brand-mark.svg" alt="" width="40" height="40" />
+        <span>Terra<span>Resources</span></span>
+      </a>
+      <p>A small Geography workflow hub for faster research, cleaner notes, and less repeated busywork.</p>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h2>Workbench</h2>
+        <a href="/resources/">Tools and downloads</a>
+        <a href="/sources/">Source finder</a>
+        <a href="/referencing/">Referencing guide</a>
+      </div>
+      <div>
+        <h2>Start here</h2>
+        <a href="/resources/#word-toolkit">Word toolkit</a>
+        <a href="/sources/#directory">Academic search</a>
+        <a href="/resources/#field-notes">Fieldwork templates</a>
+        <a href="/learn/">Study workflows</a>
+        <a href="/about/">About the workbench</a>
+        <a href="/privacy/">Privacy and independence</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {year} TerraResources. Built to be useful.</p>
+    <div class="footer-status">
+      <span aria-hidden="true"></span>
+      Plymouth Geography workflow hub
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 72px 0 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--ink-strong);
+    color: white;
+  }
+
+  .footer-main {
+    display: grid;
+    gap: 80px;
+    padding-bottom: 64px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-size: 1.18rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .footer-logo > span > span {
+    font-weight: 500;
+  }
+
+  .footer-logo img {
+    width: 40px;
+    height: 40px;
+    flex: none;
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px rgba(217, 237, 114, 0.18);
+    object-fit: contain;
+  }
+
+  .footer-brand p {
+    max-width: 480px;
+    margin: 24px 0 0;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.95rem;
+  }
+
+  .footer-links {
+    display: grid;
+    gap: 36px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-links div {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .footer-links h2 {
+    margin-bottom: 7px;
+    color: var(--lime);
+    font-size: 0.69rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.88rem;
+    line-height: 1.45;
+    font-weight: 650;
+    transition: color 160ms ease;
+  }
+
+  .footer-links a:hover {
+    color: white;
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.72rem;
+  }
+
+  .footer-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .footer-status span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--lime);
+    box-shadow: 0 0 0 4px rgba(217, 237, 114, 0.1);
+  }
+
+  @media (max-width: 780px) {
+    .site-footer {
+      padding-top: 56px;
+    }
+
+    .footer-main {
+      gap: 50px;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-links {
+      gap: 26px;
+      grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

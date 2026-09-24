@@ -1,0 +1,107 @@
+TERRARESOURCES TOOLKIT QUICK-START GUIDE
+=========================================
+
+Published: September 2026
+Audience: BSc Geography students at the University of Plymouth
+
+This guide explains the files in the TerraResources workflow hub. The downloads
+are small, local resources designed to be inspected before use.
+
+1. TerraResources-Word-Toolkit.zip
+   Platform: Windows with Microsoft Word
+   Requirement: AutoHotkey v2.0 or newer
+   Contents:
+     - TerraResources-Lecture-Notes.ahk
+     - TerraResources-Master-Hotkeys.ahk
+     - TerraResources-Lecture-Settings.ahk
+
+   IMPORTANT: Keep all three .ahk files in the same folder. The two main scripts
+   read the shared settings file automatically.
+
+   LECTURE NOTES TOOLKIT
+     ;;lec  + space  -> insert a formatted lecture header
+     ;;sub  + space  -> insert a Heading 2 sub-topic
+     ;;fig  + space  -> insert an italic diagram/map marker
+     ;;date          -> insert today's date
+     ;;time          -> insert the current time
+     F1              -> open the in-Word cheat sheet
+     F2              -> Heading 1
+     F3              -> Heading 2
+     F4              -> Normal body text
+     F5              -> toggle bold + underline key-term formatting
+
+   Shorthand includes:
+     w/ -> with
+     w/o -> without
+     b/c -> because
+     b4 -> before
+     eg -> e.g.
+     ie -> i.e.
+     def -> Definition:
+     todo -> TODO:
+     qq -> Question:
+     !! -> Important:
+     -> -> →
+     <- -> ←
+
+   MASTER HOTKEYS
+     Numpad1 -> GPT search
+     Numpad2 -> YouTube
+     Numpad3 -> Spotify
+     Numpad5 -> GitHub Codespaces
+     Numpad6 -> diagram marker in Word
+     Numpad7 -> lecture header in Word
+     Numpad8 -> sub-topic heading in Word
+     Numpad9 -> bullet list toggle in Word
+
+   The Word-specific actions only run while WINWORD.EXE is active. The shorthand
+   and date/time expansions are global, so use the script only in windows where
+   those expansions are useful. The launcher and map shortcuts open external
+   websites when their keys are pressed; they do not upload files or field data.
+
+2. MapShortcuts-v2.ahk
+   Platform: Windows
+   Requirement: AutoHotkey v2.0 or newer
+   Purpose: Opens OpenStreetMap and provides browser zoom shortcuts.
+
+     F6  Open OpenStreetMap
+     F7  Zoom in while a browser window is active
+     F8  Zoom out while a browser window is active
+     F9  Reset browser zoom
+     F10 Exit the AutoHotkey script
+
+3. Coordinate-Log-Template.csv
+   Platform: Any spreadsheet or text editor
+   Purpose: Records locations, elevation, accuracy, sources, and field notes.
+
+   Open the file in a spreadsheet application or edit it in a plain text editor.
+   Keep the first row as the field-name row. Save a copy before changing the
+   template structure.
+
+4. Field-Notes-Template.txt
+   Platform: Any text editor
+   Purpose: Separates direct observation, interpretation, uncertainty, and the
+   next question during fieldwork.
+
+5. REFERENCING
+   The University of Plymouth's current library guide points to Cite Them Right
+   and includes many Harvard examples, but asks students to check the programme
+   or module guidance because styles can differ.
+
+   Official guide: https://plymouth.libguides.com/searchingandreferencing/referencing
+   Use the exact style required by your module brief or programme handbook.
+
+SAFE USE
+-------
+- Download files only from the official TerraResources site or repository.
+- Inspect text and source files before running them.
+- Back up important data before adapting a template.
+- Do not run scripts or files from sources you cannot verify.
+- Test Word automation on a copy before using it on coursework.
+- Automation can support your workflow; it should not replace evidence or
+  geographic judgment.
+
+LICENSE / REUSE
+---------------
+The starter resources are provided for learning and fieldwork. Attribution to
+TerraResources is appreciated but is not required for personal use.

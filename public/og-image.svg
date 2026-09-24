@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f7f5ed"/>
+  <circle cx="1030" cy="-40" r="300" fill="#dce7d8" opacity=".55"/>
+  <circle cx="1110" cy="570" r="220" fill="#f0c7b7" opacity=".35"/>
+  <g transform="translate(92 155) scale(5)">
+    <rect x="2" y="2" width="60" height="60" rx="17" fill="#17342e"/>
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m14 47 11-11 10 4 13-19" stroke="#dc7658" stroke-width="4.5"/>
+      <path d="M25 36V26l10-9" stroke="#d9ed72" stroke-width="4.5"/>
+    </g>
+    <path d="m25 29 6 6-6 6-6-6 6-6Z" fill="#d9ed72"/>
+    <path d="m50 16-7 4 5 5 2-9Z" fill="#dc7658"/>
+  </g>
+  <text x="470" y="285" fill="#17342e" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="700" letter-spacing="-4">Terra<tspan font-weight="400">Resources</tspan></text>
+  <text x="476" y="355" fill="#52635e" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600" letter-spacing="1">GEOGRAPHY WORKFLOW HUB</text>
+  <path d="M476 405h310" stroke="#285c4b" stroke-width="5" stroke-linecap="round"/>
+  <text x="476" y="465" fill="#52635e" font-family="Arial, Helvetica, sans-serif" font-size="24">Tools · sources · fieldwork · referencing</text>
+</svg>

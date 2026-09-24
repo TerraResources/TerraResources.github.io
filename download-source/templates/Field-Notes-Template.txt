@@ -1,0 +1,41 @@
+TERRARESOURCES - FIELD NOTES
+============================
+
+Project / site:
+Date:
+Time zone:
+Observer:
+Purpose (one clear question):
+
+LOCATION
+--------
+Site name:
+Coordinates:
+Coordinate source:
+Approximate accuracy:
+
+OBSERVATION
+-----------
+Describe only what can be observed here.
+- Pattern / feature:
+- Extent:
+- Notable exceptions:
+- Conditions affecting the observation:
+
+INTERPRETATION (WAIT UNTIL LATER)
+---------------------------------
+Possible explanation:
+Supporting evidence:
+Alternative explanation:
+Uncertainty or missing evidence:
+
+NEXT QUESTION
+-------------
+What would you inspect next, and why?
+
+QUICK REFERENCE
+---------------
+N  = 0°    S = 90°S
+E  = 0°    W = 180°W
+Scale: ____________________
+Sketch or photo file names: ____________________

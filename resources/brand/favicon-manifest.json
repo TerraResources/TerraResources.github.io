@@ -1,0 +1,461 @@
+{
+  "version": 1,
+  "researchedAt": "2026-09-24",
+  "assetDirectory": "resources/brand/favicons",
+  "summary": {
+    "sourceCount": 24,
+    "localAssetCount": 17,
+    "officialCount": 20,
+    "repositoryFallbackCount": 1,
+    "serviceFallbackCount": 1,
+    "unavailableCount": 2
+  },
+  "notes": [
+    "Official site icons are snapshots; remote URLs and hashed asset paths can change.",
+    "The same local file is intentionally reused for source entries that resolve to the same website favicon (Plymouth LibGuides pages and the two Met Office entries).",
+    "Validation records the detected payload format, dimensions, byte length, and SHA-256. A few upstream .ico URLs actually serve PNG data, so their local extension is corrected to .png.",
+    "The two unavailable entries deliberately have no local file. Keep the existing initials/illustrative fallback for those sources unless a later official icon is found.",
+    "Third-party names and marks remain with their respective owners; confirm redistribution and brand-use permissions before shipping."
+  ],
+  "sources": [
+    {
+      "id": "plymouth-primo",
+      "name": "Plymouth Library Search (Primo)",
+      "sourceUrl": "https://primo.plymouth.ac.uk/nde/search?vid=44PLY_INST%3AUoP_NDE&lang=en&sortby=rank",
+      "faviconUrl": "https://primo.plymouth.ac.uk/nde/favicon.ico",
+      "localFilename": "plymouth-primo.png",
+      "localPath": "resources/brand/favicons/plymouth-primo.png",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "32x32",
+        "bytes": 902,
+        "sha256": "67fccf13bf3b47315a6b505e1673fbbea39ea944e7565250aa5827f632c65703"
+      },
+      "notes": "The page declares this icon. The upstream .ico URL serves a PNG payload, so the local extension is corrected."
+    },
+    {
+      "id": "plymouth-referencing",
+      "name": "Plymouth Referencing Guide",
+      "sourceUrl": "https://plymouth.libguides.com/searchingandreferencing/referencing",
+      "faviconUrl": "https://libapps-eu.s3.amazonaws.com/accounts/138650/images/Library_Crest_Favicon-01.png",
+      "localFilename": "plymouth-library-guides.png",
+      "localPath": "resources/brand/favicons/plymouth-library-guides.png",
+      "status": "official",
+      "sharedWith": [
+        "plymouth-subject-guides",
+        "quality-info",
+        "search-strategy",
+        "endnote"
+      ],
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "50x50",
+        "bytes": 3530,
+        "sha256": "7e8c37796075a58570023efaa0c14f6cbda510ded363e758d311ce2ad01a6744"
+      },
+      "notes": "LibGuides declares this University of Plymouth account favicon on the guide pages; the page labels it image/jpg but the payload is PNG."
+    },
+    {
+      "id": "plymouth-subject-guides",
+      "name": "Plymouth Subject Guides",
+      "sourceUrl": "https://plymouth.libguides.com/",
+      "faviconUrl": "https://libapps-eu.s3.amazonaws.com/accounts/138650/images/Library_Crest_Favicon-01.png",
+      "localFilename": "plymouth-library-guides.png",
+      "localPath": "resources/brand/favicons/plymouth-library-guides.png",
+      "status": "official",
+      "sharedWith": [
+        "plymouth-referencing",
+        "quality-info",
+        "search-strategy",
+        "endnote"
+      ],
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "50x50",
+        "bytes": 3530,
+        "sha256": "7e8c37796075a58570023efaa0c14f6cbda510ded363e758d311ce2ad01a6744"
+      },
+      "notes": "Shared University of Plymouth LibGuides favicon; see plymouth-referencing."
+    },
+    {
+      "id": "cite-them-right",
+      "name": "Cite Them Right",
+      "sourceUrl": "https://www.citethemrightonline.com/",
+      "faviconUrl": null,
+      "localFilename": null,
+      "localPath": null,
+      "status": "unavailable",
+      "validation": {
+        "verified": false
+      },
+      "notes": "The live page declares <link rel=\"icon\" href=\"\" ...>; conventional favicon and apple-touch paths resolve to the site's HTML error page. No reliable site favicon was found."
+    },
+    {
+      "id": "google-scholar",
+      "name": "Google Scholar",
+      "sourceUrl": "https://scholar.google.com/",
+      "faviconUrl": "https://scholar.google.com/apple-touch-icon-180x180.png",
+      "localFilename": "google-scholar.png",
+      "localPath": "resources/brand/favicons/google-scholar.png",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "180x180",
+        "bytes": 1506,
+        "sha256": "26fb1fc25fb7a1317f25fb80f7c3afdc4f7c05c7c684c36a2cba447b27df9cdb"
+      },
+      "notes": "The automated page request was challenged, but the standard Google Scholar apple-touch endpoint returned a valid official PNG."
+    },
+    {
+      "id": "crossref",
+      "name": "Crossref Search",
+      "sourceUrl": "https://search.crossref.org/",
+      "faviconUrl": "https://assets.crossref.org/favicon/apple-touch-icon-180x180.png",
+      "localFilename": "crossref.png",
+      "localPath": "resources/brand/favicons/crossref.png",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "180x180",
+        "bytes": 5518,
+        "sha256": "13601c1a8f56509e663a2a15d0291e4b03b367f7bd3db6d19450f720c9fda80b"
+      },
+      "notes": "Crossref declares a full apple-touch set; the 180px asset was selected."
+    },
+    {
+      "id": "openalex",
+      "name": "OpenAlex",
+      "sourceUrl": "https://openalex.org/",
+      "faviconUrl": "https://raw.githubusercontent.com/ourresearch/openalex-website/master/public/favicon.png",
+      "localFilename": "openalex.png",
+      "localPath": "resources/brand/favicons/openalex.png",
+      "status": "official-repository-fallback",
+      "targetSiteFaviconObtained": false,
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "32x32",
+        "bytes": 2217,
+        "sha256": "f68124616d4b53ac9379c63e4756e1ffbb88a47bba7a4bb6765ca321e58fc95b"
+      },
+      "notes": "The live site returned a Cloudflare challenge to automated retrieval. This is the favicon declared by, and published in, the official ourresearch/openalex-website repository; treat it as a repository fallback rather than a live-site scrape."
+    },
+    {
+      "id": "doaj",
+      "name": "DOAJ",
+      "sourceUrl": "https://doaj.org/",
+      "faviconUrl": "https://doaj.org/assets/img/favicon/apple-touch-icon.png",
+      "localFilename": "doaj.png",
+      "localPath": "resources/brand/favicons/doaj.png",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "180x180",
+        "bytes": 3001,
+        "sha256": "0fdfaa2c622c6ec06f8d5f1899d81568b86e689194df9f48da618045de46edec"
+      },
+      "notes": "The home route served a security challenge, but this static favicon path is the one declared in DOAJ's own 404 template and returned a valid official PNG."
+    },
+    {
+      "id": "jstor",
+      "name": "JSTOR",
+      "sourceUrl": "https://www.jstor.org/",
+      "faviconUrl": "https://www.jstor.org/assets/global_20251201T215504/build/images/favicons/apple-touch-icon.png",
+      "localFilename": "jstor.png",
+      "localPath": "resources/brand/favicons/jstor.png",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "180x180",
+        "bytes": 40327,
+        "sha256": "dff364d12d03766750351fb09655911423d2f399dbe69dce74b31a7635ded149"
+      },
+      "notes": "JSTOR declares this apple-touch icon in its current global asset build; the URL is versioned."
+    },
+    {
+      "id": "ons",
+      "name": "Office for National Statistics",
+      "sourceUrl": "https://www.ons.gov.uk/",
+      "faviconUrl": "https://www.ons.gov.uk/favicon.ico",
+      "localFilename": "ons.ico",
+      "localPath": "resources/brand/favicons/ons.ico",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "ico",
+        "dimensions": "32x32",
+        "bytes": 4286,
+        "sha256": "d344c9c56d8756651bb5c7f39f7c57c09970e4f34c128da99dab05e80991cccf"
+      },
+      "notes": "No icon link element was present in the fetched page, but the official host's conventional /favicon.ico endpoint returned a valid ONS ICO."
+    },
+    {
+      "id": "uk-data-service",
+      "name": "UK Data Service",
+      "sourceUrl": "https://ukdataservice.ac.uk/",
+      "faviconUrl": "https://ukdataservice.ac.uk/app/uploads/ukds-favicon.jpeg",
+      "localFilename": "uk-data-service.jpeg",
+      "localPath": "resources/brand/favicons/uk-data-service.jpeg",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "jpeg",
+        "dimensions": "200x200",
+        "bytes": 10499,
+        "sha256": "f2d63dc2e4faa2f00dd497e6881ee25208124143acdf3527080ecfc774dfeb7b"
+      },
+      "notes": "The page declares this asset for both apple-touch-icon and high-resolution icon links."
+    },
+    {
+      "id": "data-gov-uk",
+      "name": "data.gov.uk",
+      "sourceUrl": "https://data.gov.uk/",
+      "faviconUrl": "https://www.data.gov.uk/assets/images/favicon.c5b82a321b64.png",
+      "localFilename": "data-gov-uk.png",
+      "localPath": "resources/brand/favicons/data-gov-uk.png",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "48x48",
+        "bytes": 416,
+        "sha256": "7b575a40ec1338cf0c982520559cba4ec2baeb907098de9b1c7899b8842a1351"
+      },
+      "notes": "The current data.gov.uk page declares this favicon asset."
+    },
+    {
+      "id": "geoportal-ons",
+      "name": "ONS Geoportal",
+      "sourceUrl": "https://geoportal.statistics.gov.uk/",
+      "faviconUrl": null,
+      "localFilename": null,
+      "localPath": null,
+      "status": "unavailable",
+      "validation": {
+        "verified": false
+      },
+      "notes": "The ArcGIS Hub app configuration explicitly contains faviconUrl: \"\"; direct favicon/apple paths return 404 and the route redirects to hub.arcgis.com/legacy. No site-specific favicon was found."
+    },
+    {
+      "id": "osgb",
+      "name": "Ordnance Survey",
+      "sourceUrl": "https://www.ordnancesurvey.co.uk/",
+      "faviconUrl": "https://osdatahub.os.uk/os_favicon.ico",
+      "localFilename": "ordnance-survey.ico",
+      "localPath": "resources/brand/favicons/ordnance-survey.ico",
+      "status": "official-service-fallback",
+      "targetSiteFaviconObtained": false,
+      "validation": {
+        "verified": true,
+        "format": "ico",
+        "dimensions": "64x64, 32x32, 24x24, 16x16",
+        "bytes": 32988,
+        "sha256": "0b82637e92ff117725c77dca20f0ec16f45918cec78ba757fc630ebd40ce3be4"
+      },
+      "notes": "The main site returned 403 from this environment. This is the favicon declared by Ordnance Survey's official OS Data Hub service, not a confirmed favicon for the main site; use only as a clearly marked fallback."
+    },
+    {
+      "id": "openstreetmap",
+      "name": "OpenStreetMap",
+      "sourceUrl": "https://www.openstreetmap.org/",
+      "faviconUrl": "https://www.openstreetmap.org/assets/apple-touch-icon-180x180-ea6361d7ae5b3f08c6290652ad703fa239364cc09c84873044f3299845f24652.png",
+      "localFilename": "openstreetmap.png",
+      "localPath": "resources/brand/favicons/openstreetmap.png",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "180x180",
+        "bytes": 43130,
+        "sha256": "8575b865b66da9ea7452adf3c20f9eb715ee4290254a22987c483c3826b93205"
+      },
+      "notes": "OpenStreetMap declares this apple-touch asset; the URL is content-hashed and may change with a future asset build."
+    },
+    {
+      "id": "qgis",
+      "name": "QGIS",
+      "sourceUrl": "https://qgis.org/",
+      "faviconUrl": "https://qgis.org/img/favicon/apple-touch-icon.png",
+      "localFilename": "qgis.png",
+      "localPath": "resources/brand/favicons/qgis.png",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "180x180",
+        "bytes": 14388,
+        "sha256": "c6997b9b274710f5d9e01bf180a8680d2eb18baa36623ba4bbffac983b385f6c"
+      },
+      "notes": "QGIS declares this 180px apple-touch icon."
+    },
+    {
+      "id": "natural-earth",
+      "name": "Natural Earth",
+      "sourceUrl": "https://www.naturalearthdata.com/",
+      "faviconUrl": "https://www.naturalearthdata.com/favicon.ico",
+      "localFilename": "natural-earth.png",
+      "localPath": "resources/brand/favicons/natural-earth.png",
+      "status": "official",
+      "brandSpecific": false,
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "80x80",
+        "bytes": 4119,
+        "sha256": "6bdb369337ac2496761c6f063bffea0aa6a91d4662279c399071a468251f51f0"
+      },
+      "notes": "The page declares favicon.ico; the downloaded payload is PNG, so the local extension is corrected. The resulting icon is a generic WordPress W rather than a Natural Earth mark, so it is recorded for completeness but should not be treated as brand-specific without review."
+    },
+    {
+      "id": "met-office",
+      "name": "Met Office",
+      "sourceUrl": "https://www.metoffice.gov.uk/",
+      "faviconUrl": "https://www.metoffice.gov.uk/favicon.png",
+      "localFilename": "met-office.png",
+      "localPath": "resources/brand/favicons/met-office.png",
+      "status": "official",
+      "sharedWith": [
+        "uk-climate-maps-data"
+      ],
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "144x144",
+        "bytes": 2089,
+        "sha256": "638539cd36c57820156ac1363bbe92b55c03bf1f88370a127bcb56fab4caf3f0"
+      },
+      "notes": "The site declares both light and dark favicons; the standard light icon is stored once and shared with the climate maps entry."
+    },
+    {
+      "id": "uk-climate-maps-data",
+      "name": "UK climate maps and data",
+      "sourceUrl": "https://www.metoffice.gov.uk/research/climate/maps-and-data",
+      "faviconUrl": "https://www.metoffice.gov.uk/favicon.png",
+      "localFilename": "met-office.png",
+      "localPath": "resources/brand/favicons/met-office.png",
+      "status": "official",
+      "sharedWith": [
+        "met-office"
+      ],
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "144x144",
+        "bytes": 2089,
+        "sha256": "638539cd36c57820156ac1363bbe92b55c03bf1f88370a127bcb56fab4caf3f0"
+      },
+      "notes": "Same Met Office host favicon as met-office; intentionally deduplicated."
+    },
+    {
+      "id": "copernicus-cds",
+      "name": "Copernicus Climate Data Store",
+      "sourceUrl": "https://cds.climate.copernicus.eu/",
+      "faviconUrl": "https://cds.climate.copernicus.eu/_next/static/media/favicon.7aafb9d8.ico",
+      "localFilename": "copernicus-cds.ico",
+      "localPath": "resources/brand/favicons/copernicus-cds.ico",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "ico",
+        "dimensions": "48x48, 32x32",
+        "bytes": 15086,
+        "sha256": "967e12fc6a205b8c2c8544faa18d193b1a2fa371f24c7a076dec8a98df948893"
+      },
+      "notes": "The live page's link points to a 16x16 .ico-named PNG. The current CDS app bundle also references this higher-resolution official multi-size ICO, which was selected for better display quality."
+    },
+    {
+      "id": "ceh",
+      "name": "Centre for Ecology & Hydrology",
+      "sourceUrl": "https://www.ceh.ac.uk/",
+      "faviconUrl": "https://www.ceh.ac.uk/themes/custom/ceh/favicon.ico",
+      "localFilename": "ceh.ico",
+      "localPath": "resources/brand/favicons/ceh.ico",
+      "status": "official",
+      "validation": {
+        "verified": true,
+        "format": "ico",
+        "dimensions": "16x16, 32x32, 48x48",
+        "bytes": 15406,
+        "sha256": "92deaabb41fbd8d04c42fb71e3264db383b2c9ffe7a6cfcd47df6d61f2dd46fa"
+      },
+      "notes": "The site declares this multi-resolution ICO."
+    },
+    {
+      "id": "quality-info",
+      "name": "Plymouth: Quality of Information",
+      "sourceUrl": "https://plymouth.libguides.com/skills/qualityinfo",
+      "faviconUrl": "https://libapps-eu.s3.amazonaws.com/accounts/138650/images/Library_Crest_Favicon-01.png",
+      "localFilename": "plymouth-library-guides.png",
+      "localPath": "resources/brand/favicons/plymouth-library-guides.png",
+      "status": "official",
+      "sharedWith": [
+        "plymouth-referencing",
+        "plymouth-subject-guides",
+        "search-strategy",
+        "endnote"
+      ],
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "50x50",
+        "bytes": 3530,
+        "sha256": "7e8c37796075a58570023efaa0c14f6cbda510ded363e758d311ce2ad01a6744"
+      },
+      "notes": "Shared University of Plymouth LibGuides favicon; see plymouth-referencing."
+    },
+    {
+      "id": "search-strategy",
+      "name": "Plymouth: Search Strategy",
+      "sourceUrl": "https://plymouth.libguides.com/skills/searchstrategy",
+      "faviconUrl": "https://libapps-eu.s3.amazonaws.com/accounts/138650/images/Library_Crest_Favicon-01.png",
+      "localFilename": "plymouth-library-guides.png",
+      "localPath": "resources/brand/favicons/plymouth-library-guides.png",
+      "status": "official",
+      "sharedWith": [
+        "plymouth-referencing",
+        "plymouth-subject-guides",
+        "quality-info",
+        "endnote"
+      ],
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "50x50",
+        "bytes": 3530,
+        "sha256": "7e8c37796075a58570023efaa0c14f6cbda510ded363e758d311ce2ad01a6744"
+      },
+      "notes": "Shared University of Plymouth LibGuides favicon; see plymouth-referencing."
+    },
+    {
+      "id": "endnote",
+      "name": "Plymouth: EndNote support",
+      "sourceUrl": "https://plymouth.libguides.com/searchingandreferencing/endnote",
+      "faviconUrl": "https://libapps-eu.s3.amazonaws.com/accounts/138650/images/Library_Crest_Favicon-01.png",
+      "localFilename": "plymouth-library-guides.png",
+      "localPath": "resources/brand/favicons/plymouth-library-guides.png",
+      "status": "official",
+      "sharedWith": [
+        "plymouth-referencing",
+        "plymouth-subject-guides",
+        "quality-info",
+        "search-strategy"
+      ],
+      "validation": {
+        "verified": true,
+        "format": "png",
+        "dimensions": "50x50",
+        "bytes": 3530,
+        "sha256": "7e8c37796075a58570023efaa0c14f6cbda510ded363e758d311ce2ad01a6744"
+      },
+      "notes": "Shared University of Plymouth LibGuides favicon; see plymouth-referencing."
+    }
+  ]
+}

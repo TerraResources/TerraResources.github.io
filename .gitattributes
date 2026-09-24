@@ -1,0 +1,10 @@
+* text=auto eol=lf
+*.ahk text eol=crlf
+*.csv text eol=lf
+*.txt text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.zip binary

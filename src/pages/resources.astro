@@ -1,0 +1,485 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FilterBar from '../components/FilterBar.astro';
+import EmptyState from '../components/EmptyState.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ToolCard from '../components/ToolCard.astro';
+import { tools, toolCategories } from '../data/tools';
+
+const readyTools = tools.filter((tool) => tool.status === 'Ready');
+const wordToolkit = tools.find((tool) => tool.id === 'word-toolkit');
+---
+
+<BaseLayout
+  title="Tools and downloads"
+  description="Download practical Geography study tools, including Word AutoHotkey shortcuts, fieldwork templates, and mapping helpers."
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Tools and downloads"
+      title="Take the busywork out of Geography."
+      intro="Shortcuts and templates for the repeated jobs: formatting notes, opening research tools, recording a site, and getting a clean file into your workflow."
+      heroClass="tools-hero"
+      asideClass="tools-hero__aside"
+    >
+      <div class="tools-hero__card reveal reveal--delay" slot="aside">
+        <div class="tools-hero__card-top">
+          <span>TOOLKIT STATUS</span>
+          <span class="live-badge"><i></i> READY</span>
+        </div>
+        <strong>{String(readyTools.length).padStart(2, '0')}</strong>
+        <p>small downloads, no account required</p>
+        <div class="tools-hero__card-meta">
+          <span>Windows tools marked</span>
+          <span>Plain formats</span>
+          <span>Source visible</span>
+        </div>
+      </div>
+    </PageHero>
+
+    <section class="section tool-library" id="library">
+      <div class="container">
+        <div class="library-heading">
+          <SectionHeading
+            eyebrow="Choose a tool"
+            title="Open the file that matches the job."
+            intro="Search by task, filter by category, and inspect the details before you run anything."
+          />
+          <p class="resource-count" aria-live="polite" data-result-count>{tools.length} tools</p>
+        </div>
+
+        <FilterBar
+          searchLabel="Search tools"
+          placeholder="Search Word, fieldwork, maps…"
+          categories={toolCategories}
+          itemName="tool"
+        />
+
+        <div class="tool-grid" data-tool-grid>
+          {tools.map((tool) => <ToolCard tool={tool} />)}
+        </div>
+
+        <EmptyState
+          title="No tools found"
+          message="Try a broader search or reset the category filter."
+        />
+      </div>
+    </section>
+
+    {
+      wordToolkit && (
+        <section class="section section--dark toolkit-feature" id="word-toolkit-feature">
+          <div class="container toolkit-feature__grid">
+            <div>
+              <span class="eyebrow">Featured · Windows + Word</span>
+              <h2 class="section-title">Your lecture-note shortcuts, in one place.</h2>
+              <p>
+                The Word toolkit turns a blank page into a consistent note structure:
+                lecture headers, sub-topics, diagram markers, heading styles, and a
+                one-key cheat sheet.
+              </p>
+              <a class="button button--light" href={wordToolkit.href} download>
+                Download the ZIP
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M10 3v10m-4-4 4 4 4-4M4 16h12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <p class="toolkit-feature__small">Includes the shared settings file. Keep all three .ahk files together.</p>
+            </div>
+
+            <div class="shortcut-board">
+              <div class="shortcut-board__header">
+                <span>LECTURE NOTES</span>
+                <span>QUICK REFERENCE</span>
+              </div>
+              <div class="shortcut-board__row"><kbd>;;lec</kbd><span>Lecture header</span><b>space</b></div>
+              <div class="shortcut-board__row"><kbd>;;sub</kbd><span>Sub-topic heading</span><b>space</b></div>
+              <div class="shortcut-board__row"><kbd>;;fig</kbd><span>Diagram/map marker</span><b>space</b></div>
+              <div class="shortcut-board__row"><kbd>F1</kbd><span>Open cheat sheet</span><b>Word</b></div>
+              <div class="shortcut-board__row"><kbd>F2–F5</kbd><span>Heading and style keys</span><b>Word</b></div>
+              <div class="shortcut-board__footer"><span>AutoHotkey v2</span><span>Press F1 for the full list</span></div>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <section class="section section--sage tool-philosophy">
+      <div class="container tool-philosophy__grid">
+        <div>
+          <span class="eyebrow">Safe by default</span>
+          <h2 class="section-title">Small scripts should be easy to inspect.</h2>
+          <p>
+            The files here use plain formats and local automation. Read the comments,
+            test on a small document, and keep backups of coursework. Verify generated
+            files against the <a href="/downloads/SHA256SUMS.txt">SHA-256 manifest</a>.
+            The University’s own VLE and library remain the source of truth for your modules.
+          </p>
+        </div>
+        <ol class="safe-steps">
+          <li><span>01</span><div><h3>Download from here</h3><p>Keep the file names and folder structure intact.</p></div></li>
+          <li><span>02</span><div><h3>Read the comments</h3><p>Know what the script sends before you run it.</p></div></li>
+          <li><span>03</span><div><h3>Test small</h3><p>Use a copy of a document, not your only original.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="tool-next-step">
+          <div>
+            <span class="eyebrow">Need information next?</span>
+            <h2>Go from a source link to a usable reference.</h2>
+            <p>Start with the source finder, then check the Plymouth referencing guide before you submit.</p>
+          </div>
+          <div class="tool-next-step__actions">
+            <a class="button button--primary" href="/sources/">Find a source</a>
+            <a class="button button--secondary" href="/referencing/">Check referencing</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .tools-hero__card {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: var(--radius-md);
+    background: var(--moss);
+    color: white;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .tools-hero__card::after {
+    position: absolute;
+    right: -100px;
+    bottom: -135px;
+    width: 270px;
+    height: 270px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 0 0 40px rgba(255, 255, 255, 0.05);
+    content: '';
+  }
+
+  .tools-hero__card-top,
+  .tools-hero__card-meta {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tools-hero__card-top {
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.63);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+  }
+
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--lime);
+  }
+
+  .live-badge i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 4px rgba(217, 237, 114, 0.12);
+  }
+
+  .tools-hero__card > strong {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 48px;
+    color: white;
+    font-size: clamp(5rem, 10vw, 8rem);
+    font-weight: 580;
+    letter-spacing: -0.08em;
+    line-height: 0.8;
+  }
+
+  .tools-hero__card > p {
+    position: relative;
+    z-index: 1;
+    margin: 18px 0 36px;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.9rem;
+  }
+
+  .tools-hero__card-meta span {
+    padding: 6px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    font-size: 0.58rem;
+    font-weight: 750;
+  }
+
+  .tool-library {
+    background: var(--white);
+  }
+
+  .library-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .resource-count {
+    flex: none;
+    margin: 0 0 7px;
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    font-weight: 750;
+  }
+
+  .tool-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .toolkit-feature {
+    overflow: hidden;
+  }
+
+  .toolkit-feature__grid {
+    display: grid;
+    align-items: center;
+    gap: clamp(55px, 9vw, 120px);
+    grid-template-columns: minmax(0, 0.9fr) minmax(400px, 1.1fr);
+  }
+
+  .toolkit-feature :global(.eyebrow) {
+    color: var(--lime);
+  }
+
+  .toolkit-feature :global(.section-title) {
+    color: white;
+  }
+
+  .toolkit-feature__grid > div:first-child > p:not(.toolkit-feature__small) {
+    max-width: 560px;
+    margin-bottom: 28px;
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 1.03rem;
+  }
+
+  .toolkit-feature__small {
+    max-width: 540px;
+    margin: 16px 0 0;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.72rem;
+  }
+
+  .shortcut-board {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .shortcut-board__header,
+  .shortcut-board__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px 19px;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .shortcut-board__header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .shortcut-board__row {
+    display: grid;
+    align-items: center;
+    gap: 15px;
+    padding: 17px 19px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.78rem;
+    grid-template-columns: 100px 1fr auto;
+  }
+
+  .shortcut-board__row kbd {
+    display: inline-flex;
+    min-height: 29px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    border: 1px solid rgba(217, 237, 114, 0.35);
+    border-radius: 7px;
+    background: rgba(217, 237, 114, 0.1);
+    color: var(--lime);
+    font-family: 'Manrope Variable', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 800;
+  }
+
+  .shortcut-board__row b {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.61rem;
+    font-weight: 700;
+  }
+
+  .shortcut-board__footer {
+    letter-spacing: 0;
+  }
+
+  .tool-philosophy__grid {
+    display: grid;
+    align-items: start;
+    gap: clamp(50px, 9vw, 120px);
+    grid-template-columns: minmax(0, 0.85fr) minmax(380px, 1.15fr);
+  }
+
+  .tool-philosophy__grid > div > p {
+    max-width: 540px;
+    color: var(--ink-soft);
+  }
+
+  .safe-steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .safe-steps li {
+    display: grid;
+    gap: 17px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(23, 52, 46, 0.16);
+    grid-template-columns: 42px 1fr;
+  }
+
+  .safe-steps li:first-child {
+    padding-top: 0;
+  }
+
+  .safe-steps li > span {
+    color: var(--moss);
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .safe-steps h3 {
+    margin-bottom: 3px;
+    color: var(--ink-strong);
+    font-size: 1.1rem;
+  }
+
+  .safe-steps p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+  }
+
+  .tool-next-step {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: clamp(30px, 5vw, 55px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+  }
+
+  .tool-next-step h2 {
+    margin-bottom: 10px;
+    color: var(--ink-strong);
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 620;
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+  }
+
+  .tool-next-step p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+
+  .tool-next-step__actions {
+    display: flex;
+    flex: none;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @media (max-width: 900px) {
+    .tool-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .toolkit-feature__grid,
+    .tool-philosophy__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .library-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .resource-count {
+      margin-bottom: 0;
+    }
+
+    .tool-next-step {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .tool-next-step__actions {
+      width: 100%;
+    }
+
+    .tool-next-step__actions .button {
+      flex: 1 1 100%;
+    }
+
+    .tool-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .shortcut-board__row {
+      grid-template-columns: 80px 1fr;
+    }
+
+    .shortcut-board__row b {
+      display: none;
+    }
+  }
+</style>

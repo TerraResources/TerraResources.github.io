@@ -1,0 +1,20 @@
+# build output
+dist/
+public/downloads/
+
+# dependencies
+node_modules/
+
+# generated Astro files
+.astro/
+
+# environment files
+.env
+.env.*
+!.env.example
+
+# logs and local files
+*.log
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,281 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<BaseLayout
+  title="About the workbench"
+  description="How TerraResources is maintained as a small, practical Geography workflow hub for students and friends."
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="About the workbench"
+      title="A shortcut layer for Geography work."
+      intro="TerraResources is a small collection of tools, trusted starting points, and repeatable study workflows for me and my friends. It is deliberately not a second university portal."
+      heroClass="about-hero"
+      asideClass="about-hero__aside"
+    >
+      <div class="about-manifesto reveal reveal--delay" slot="aside">
+        <span>THE TEST</span>
+        <strong>Does this remove a repeated point of friction?</strong>
+        <p>If yes, it stays. If it only adds something to read, it does not belong here.</p>
+      </div>
+    </PageHero>
+
+    <div class="container access-note">
+      <strong>Access note</strong>
+      <p>This GitHub Pages site is static: anyone with the URL can view it. Keep personal schedules, grades, and private coursework out until access control is added.</p>
+    </div>
+
+    <section class="section about-principles-section">
+      <div class="container">
+        <SectionHeading
+          eyebrow="What belongs here"
+          title="Useful, inspectable, and easy to maintain."
+          intro="The site is owner-maintained, so clarity and reliability matter more than a huge catalogue."
+        />
+        <div class="about-principles-grid">
+          <article>
+            <span>01</span>
+            <h3>Remove busywork</h3>
+            <p>Automate the repeated formatting and launching tasks that get in the way of thinking.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Point to the source</h3>
+            <p>Prefer official library guidance, specialist directories, and open data over vague lists of links.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Show the working</h3>
+            <p>Scripts and templates should be readable, versioned, and safe to inspect before use.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Respect the brief</h3>
+            <p>The University’s module handbook, VLE, library, and assessment guidance always come first.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--sage about-next-section">
+      <div class="container about-next__grid">
+        <div>
+          <span class="eyebrow">Where to start</span>
+          <h2 class="section-title">Open the thing you need now.</h2>
+          <p>There is no onboarding maze. Pick a workflow and use it.</p>
+        </div>
+        <div class="about-next__links">
+          <a href="/resources/"><span>Tools</span><strong>Word shortcuts and fieldwork templates →</strong></a>
+          <a href="/sources/"><span>Sources</span><strong>Find academic, map, climate, and UK data sources →</strong></a>
+          <a href="/referencing/"><span>Referencing</span><strong>Check Plymouth guidance before citing →</strong></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-manifesto {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: var(--radius-md);
+    background: var(--moss);
+    color: white;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .about-manifesto::after {
+    position: absolute;
+    right: -100px;
+    bottom: -120px;
+    width: 270px;
+    height: 270px;
+    border: 1px solid rgba(217, 237, 114, 0.25);
+    border-radius: 50%;
+    box-shadow: 0 0 0 40px rgba(217, 237, 114, 0.06);
+    content: '';
+  }
+
+  .about-manifesto > span,
+  .about-manifesto > strong,
+  .about-manifesto > p {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-manifesto > span {
+    color: var(--lime);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+  }
+
+  .about-manifesto > strong {
+    display: block;
+    max-width: 390px;
+    margin-top: 56px;
+    color: white;
+    font-size: clamp(1.9rem, 3.5vw, 3rem);
+    font-weight: 620;
+    letter-spacing: -0.05em;
+    line-height: 1.03;
+  }
+
+  .about-manifesto > p {
+    max-width: 390px;
+    margin: 18px 0 0;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.87rem;
+  }
+
+  .access-note {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    padding: 20px 24px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: rgba(255, 254, 249, 0.48);
+  }
+
+  .access-note strong {
+    flex: none;
+    color: var(--moss);
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .access-note p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+  }
+
+  .about-principles-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .about-principles-grid article {
+    min-height: 260px;
+    padding: 23px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--white);
+  }
+
+  .about-principles-grid article > span {
+    color: var(--moss);
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .about-principles-grid h3 {
+    margin: 82px 0 10px;
+    color: var(--ink-strong);
+    font-size: 1.25rem;
+    font-weight: 650;
+    letter-spacing: -0.04em;
+  }
+
+  .about-principles-grid p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.83rem;
+  }
+
+  .about-next__grid {
+    display: grid;
+    align-items: center;
+    gap: clamp(50px, 9vw, 120px);
+    grid-template-columns: minmax(0, 0.8fr) minmax(380px, 1.2fr);
+  }
+
+  .about-next__grid > div:first-child > p {
+    color: var(--ink-soft);
+  }
+
+  .about-next__links {
+    display: grid;
+    gap: 10px;
+  }
+
+  .about-next__links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 19px 21px;
+    border: 1px solid rgba(23, 52, 46, 0.18);
+    border-radius: 13px;
+    background: rgba(255, 254, 249, 0.48);
+    transition: background 180ms ease, transform 180ms var(--ease);
+  }
+
+  .about-next__links a:hover {
+    background: var(--white);
+    transform: translateX(4px);
+  }
+
+  .about-next__links span {
+    flex: none;
+    color: var(--moss);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .about-next__links strong {
+    color: var(--ink-strong);
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  @media (max-width: 900px) {
+    .about-next__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-principles-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .access-note {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .about-principles-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-next__links a {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .about-next__links strong {
+      text-align: left;
+    }
+  }
+</style>

@@ -1,0 +1,111 @@
+---
+import type { Source } from '../data/sources';
+import { sourceBrands } from '../data/sourceBrands';
+
+interface Props {
+  source: Pick<Source, 'id' | 'name'>;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { source, size = 'md' } = Astro.props;
+const brand = sourceBrands[source.id];
+const isFamilyMark = brand?.family === 'plymouth';
+const favicon = brand?.favicon;
+const fallbackInitials = source.name
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((word) => word[0])
+  .join('')
+  .toUpperCase();
+const logoKind = isFamilyMark ? 'family' : favicon ? 'favicon' : 'initials';
+---
+
+<span
+  class:list={[
+    'source-logo',
+    `source-logo--${size}`,
+    `source-logo--${logoKind}`,
+  ]}
+  role="img"
+  aria-label={`${source.name} source`}
+  title={source.name}
+  data-source-logo
+  data-source-id={source.id}
+  data-source-logo-kind={logoKind}
+>
+  {
+    isFamilyMark ? (
+      <svg class="source-logo__family" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M8 12.5c5.4-2.1 10.5-1.6 16 1.6v22c-5.5-3.2-10.6-3.7-16-1.6v-22ZM40 12.5c-5.4-2.1-10.5-1.6-16 1.6v22c5.5-3.2 10.6-3.7 16-1.6v-22Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+        <path d="M24 15v20M11 19c3.6-.7 7.1-.2 10.5 1.3M37 19c-3.6-.7-7.1-.2-10.5 1.3" stroke="var(--source-logo-accent)" stroke-width="1.5" stroke-linecap="round" />
+        <circle cx="24" cy="24" r="2.5" fill="var(--source-logo-accent)" />
+      </svg>
+    ) : favicon ? (
+      <img class="source-logo__favicon" src={favicon} alt="" width="32" height="32" loading="lazy" decoding="async" />
+    ) : (
+      <span class="source-logo__initials" aria-hidden="true">{fallbackInitials}</span>
+    )
+  }
+</span>
+
+<style>
+  .source-logo {
+    --source-logo-size: 48px;
+    position: relative;
+    display: inline-grid;
+    width: var(--source-logo-size);
+    height: var(--source-logo-size);
+    flex: none;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    background: var(--white);
+    color: var(--moss);
+    place-items: center;
+  }
+
+  .source-logo--sm {
+    --source-logo-size: 34px;
+    border-radius: 10px;
+  }
+
+  .source-logo--lg {
+    --source-logo-size: 64px;
+    border-radius: 18px;
+  }
+
+  .source-logo--family {
+    --source-logo-accent: #d9ed72;
+    border-color: rgba(217, 237, 114, 0.34);
+    background: #163c5a;
+    color: white;
+  }
+
+  .source-logo__family {
+    width: 76%;
+    height: 76%;
+  }
+
+  .source-logo__favicon {
+    width: 76%;
+    height: 76%;
+    border-radius: 7px;
+    object-fit: contain;
+  }
+
+  .source-logo--initials {
+    background: #e3edcf;
+    color: var(--moss-dark);
+  }
+
+  .source-logo__initials {
+    font-size: 0.7rem;
+    font-weight: 850;
+    letter-spacing: -0.04em;
+  }
+
+  .source-logo--sm .source-logo__initials {
+    font-size: 0.58rem;
+  }
+</style>

@@ -1,0 +1,443 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<BaseLayout
+  title="Referencing guide"
+  description="A practical starting point for referencing BSc Geography work at the University of Plymouth, with official library links and citation checks."
+>
+  <Header />
+
+  <main id="main-content">
+    <PageHero
+      eyebrow="Referencing for Geography"
+      title="Make the source easy to find later."
+      intro="A short route through Plymouth’s own guidance: check the module brief, choose the required style, and keep enough information to make the reference traceable."
+      heroClass="reference-hero"
+      asideClass="reference-hero__aside"
+    >
+      <div class="reference-hero__card reveal reveal--delay" slot="aside">
+        <span>PLYMOUTH LIBRARY</span>
+        <strong>Check the brief first. The guide is the safety net.</strong>
+        <p>Plymouth’s current referencing guide points to Cite Them Right and includes many Harvard examples, while reminding students to check programme or module guidance.</p>
+        <a href="https://plymouth.libguides.com/searchingandreferencing/referencing" target="_blank" rel="noopener noreferrer">Open the official guide <span aria-hidden="true">↗</span></a>
+      </div>
+    </PageHero>
+
+    <section class="section section--tight reference-decision-section">
+      <div class="container">
+        <SectionHeading
+          eyebrow="The short version"
+          title="Three steps before you format anything."
+          intro="The exact style can vary between modules. Do not let a website—or a friend—guess it for you."
+        />
+        <ol class="reference-decision-grid">
+          <li>
+            <span>01</span>
+            <h3>Read the module brief</h3>
+            <p>Check the assessment sheet, module handbook, or the wording in the task for a named style.</p>
+          </li>
+          <li>
+            <span>02</span>
+            <h3>Use the official guide</h3>
+            <p>Plymouth’s guide links to Cite Them Right, referencing tutorials, EndNote support, and plagiarism guidance.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <h3>Ask if it is unclear</h3>
+            <p>Contact the module team or the Geography Library and Information Specialist before submission.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--sage reference-basics-section">
+      <div class="container reference-basics__grid">
+        <div>
+          <span class="eyebrow">A working starting point</span>
+          <h2 class="section-title">Harvard is useful, but it is not a substitute for the brief.</h2>
+          <p>
+            The University’s public guide currently uses Cite Them Right as a central
+            starting point and says it has many Harvard examples. It also links to other
+            styles for different subjects. For Geography, use Harvard as a provisional
+            workflow only until your module guidance says otherwise.
+          </p>
+          <div class="reference-basics__links">
+            <a class="text-link" href="https://plymouth.libguides.com/searchingandreferencing/referencingstyles" target="_blank" rel="noopener noreferrer">Referencing style tutorials</a>
+            <a class="text-link" href="https://plymouth.libguides.com/searchingandreferencing/endnote" target="_blank" rel="noopener noreferrer">EndNote support</a>
+          </div>
+        </div>
+
+        <div class="reference-checklist">
+          <div class="reference-checklist__header"><span>BEFORE YOU SUBMIT</span><span>REFERENCE CHECK</span></div>
+          <ul>
+            <li><span>01</span><p>Author or organisation named correctly</p></li>
+            <li><span>02</span><p>Year and full title recorded</p></li>
+            <li><span>03</span><p>Journal, book, report, or website identified</p></li>
+            <li><span>04</span><p>Volume, issue, pages, DOI, or URL included where needed</p></li>
+            <li><span>05</span><p>In-text citation matches the bibliography</p></li>
+            <li><span>06</span><p>Style checked against this module’s brief</p></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reference-patterns-section">
+      <div class="container">
+        <div class="section-heading-row">
+          <SectionHeading
+            eyebrow="Citation patterns"
+            title="Keep the trail while you write."
+            intro="These are orientation patterns, not a substitute for the official style guide or your module brief."
+          />
+          <a class="text-link" href="https://www.citethemrightonline.com/" target="_blank" rel="noopener noreferrer">See exact examples</a>
+        </div>
+
+        <div class="pattern-grid">
+          <article>
+            <span class="pattern-label">IN-TEXT CITATION</span>
+            <h3>Name the source, not just the website.</h3>
+            <code>(Author, year)</code>
+            <p>Use the author or organisation and the year required by your chosen style. Add a page number when the claim comes from a specific place.</p>
+          </article>
+          <article>
+            <span class="pattern-label">BOOK / ARTICLE</span>
+            <h3>Record the container, not just the title.</h3>
+            <code>Author, year, title, publication details</code>
+            <p>For a journal article, capture the journal title, volume, issue, and page range where applicable.</p>
+          </article>
+          <article>
+            <span class="pattern-label">WEB / DATA</span>
+            <h3>Make the page findable again.</h3>
+            <code>Organisation, year, page title, URL, access date</code>
+            <p>Record who published the page, when it was published or updated, and the date you accessed changing content.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight reference-help-section">
+      <div class="container">
+        <div class="reference-help">
+          <div>
+            <span class="eyebrow">Still unsure?</span>
+            <h2>Ask the people who can see your brief.</h2>
+            <p>
+              Plymouth’s Geography, Earth and Environment Science Library and Information
+              Specialist can help with literature searching, source evaluation, referencing,
+              and database access.
+            </p>
+          </div>
+          <div class="reference-help__actions">
+            <a class="button button--primary" href="https://plymouth.libguides.com/c.php?g=229432&p=4825080" target="_blank" rel="noopener noreferrer">Find library support</a>
+            <a class="button button--secondary" href="/sources/">Use the source finder</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .reference-hero__card {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: var(--radius-md);
+    background: var(--clay);
+    color: var(--ink-strong);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .reference-hero__card::after {
+    position: absolute;
+    right: -95px;
+    bottom: -120px;
+    width: 270px;
+    height: 270px;
+    border: 1px solid rgba(13, 36, 31, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 0 0 40px rgba(13, 36, 31, 0.05);
+    content: '';
+  }
+
+  .reference-hero__card > span,
+  .reference-hero__card > strong,
+  .reference-hero__card > p,
+  .reference-hero__card > a {
+    position: relative;
+    z-index: 1;
+  }
+
+  .reference-hero__card > span {
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+  }
+
+  .reference-hero__card > strong {
+    display: block;
+    max-width: 370px;
+    margin-top: 50px;
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    font-weight: 650;
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+  }
+
+  .reference-hero__card > p {
+    max-width: 390px;
+    margin: 17px 0 24px;
+    color: rgba(13, 36, 31, 0.7);
+    font-size: 0.86rem;
+  }
+
+  .reference-hero__card > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-strong);
+    font-size: 0.77rem;
+    font-weight: 800;
+  }
+
+  .reference-decision-grid {
+    display: grid;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .reference-decision-grid li {
+    min-height: 220px;
+    padding: 23px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--white);
+  }
+
+  .reference-decision-grid li > span {
+    color: var(--moss);
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .reference-decision-grid h3 {
+    margin: 58px 0 9px;
+    color: var(--ink-strong);
+    font-size: 1.25rem;
+    font-weight: 650;
+    letter-spacing: -0.04em;
+  }
+
+  .reference-decision-grid p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.84rem;
+  }
+
+  .reference-basics__grid {
+    display: grid;
+    align-items: center;
+    gap: clamp(50px, 9vw, 120px);
+    grid-template-columns: minmax(0, 0.9fr) minmax(380px, 1.1fr);
+  }
+
+  .reference-basics__grid > div:first-child > p {
+    max-width: 580px;
+    color: var(--ink-soft);
+  }
+
+  .reference-basics__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 22px;
+  }
+
+  .reference-checklist {
+    overflow: hidden;
+    border: 1px solid rgba(23, 52, 46, 0.19);
+    border-radius: var(--radius-md);
+    background: rgba(255, 254, 249, 0.5);
+  }
+
+  .reference-checklist__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(23, 52, 46, 0.14);
+    color: var(--moss);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .reference-checklist ul {
+    margin: 0;
+    padding: 0 20px;
+    list-style: none;
+  }
+
+  .reference-checklist li {
+    display: grid;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(23, 52, 46, 0.12);
+    grid-template-columns: 32px 1fr;
+  }
+
+  .reference-checklist li:last-child {
+    border-bottom: 0;
+  }
+
+  .reference-checklist li > span {
+    color: var(--moss);
+    font-size: 0.65rem;
+    font-weight: 800;
+  }
+
+  .reference-checklist p {
+    margin: 0;
+    color: var(--ink-strong);
+    font-size: 0.8rem;
+    font-weight: 650;
+  }
+
+  .reference-patterns-section {
+    background: var(--white);
+  }
+
+  .pattern-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pattern-grid article {
+    min-height: 280px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--paper);
+  }
+
+  .pattern-label {
+    color: var(--moss);
+    font-size: 0.63rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .pattern-grid h3 {
+    margin: 48px 0 17px;
+    color: var(--ink-strong);
+    font-size: 1.3rem;
+    font-weight: 650;
+    letter-spacing: -0.04em;
+    line-height: 1.15;
+  }
+
+  .pattern-grid code {
+    display: block;
+    overflow-x: auto;
+    margin-bottom: 16px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--moss-dark);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.68rem;
+    white-space: nowrap;
+  }
+
+  .pattern-grid p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+  }
+
+  .reference-help {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: clamp(30px, 5vw, 58px);
+    border-radius: var(--radius-lg);
+    background: var(--moss);
+    color: white;
+  }
+
+  .reference-help :global(.eyebrow) {
+    color: var(--lime);
+  }
+
+  .reference-help h2 {
+    margin-bottom: 10px;
+    color: white;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    font-weight: 620;
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .reference-help p {
+    max-width: 650px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .reference-help__actions {
+    display: flex;
+    flex: none;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .reference-help .button--primary {
+    background: var(--lime);
+    color: var(--ink-strong);
+  }
+
+  @media (max-width: 900px) {
+    .reference-basics__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pattern-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .reference-decision-grid,
+    .reference-help {
+      grid-template-columns: 1fr;
+      flex-direction: column;
+    }
+
+    .reference-decision-grid {
+      display: grid;
+    }
+
+    .reference-help__actions {
+      width: 100%;
+    }
+
+    .reference-help__actions .button {
+      flex: 1 1 100%;
+    }
+  }
+</style>

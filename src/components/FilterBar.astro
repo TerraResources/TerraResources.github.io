@@ -1,0 +1,186 @@
+---
+interface Props {
+  searchLabel: string;
+  placeholder: string;
+  categories: string[];
+  itemName: string;
+}
+
+const { searchLabel, placeholder, categories, itemName } = Astro.props;
+---
+
+<div class="filter-bar" data-filter-bar>
+  <label class="search-field">
+    <span class="sr-only">{searchLabel}</span>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m15.5 15.5 5 5" />
+    </svg>
+    <input type="search" placeholder={placeholder} autocomplete="off" data-filter-search data-item-name={itemName} />
+  </label>
+
+  <div class="filter-group" role="group" aria-label={`Filter by ${itemName} category`}>
+    {
+      categories.map((category, index) => (
+        <button
+          type="button"
+          class:list={['filter-button', index === 0 && 'is-active']}
+          data-filter-value={category.toLowerCase()}
+          aria-pressed={index === 0 ? 'true' : 'false'}
+        >
+          {category}
+        </button>
+      ))
+    }
+  </div>
+
+</div>
+
+<script>
+  const bars = Array.from(document.querySelectorAll<HTMLElement>('[data-filter-bar]'));
+
+  bars.forEach((bar) => {
+    const searchInput = bar.querySelector<HTMLInputElement>('[data-filter-search]');
+    const filterButtons = Array.from(bar.querySelectorAll<HTMLButtonElement>('[data-filter-value]'));
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-tool-card], [data-source-card]'));
+    const resultCount = document.querySelector<HTMLElement>('[data-result-count], [data-source-count]');
+    const emptyState = document.querySelector<HTMLElement>('[data-filter-empty]');
+    const resetButton = document.querySelector<HTMLButtonElement>('[data-filter-reset]');
+    let activeCategory = 'all';
+
+    const itemName = searchInput?.getAttribute('data-item-name') ?? 'item';
+
+    const applyFilters = () => {
+      const query = searchInput?.value.trim().toLowerCase() ?? '';
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const matchesCategory = activeCategory === 'all' || card.dataset.category === activeCategory;
+        const matchesSearch = !query || card.dataset.search?.includes(query);
+        const isVisible = Boolean(matchesCategory && matchesSearch);
+
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      const label = `${visibleCount} ${visibleCount === 1 ? itemName : `${itemName}s`}`;
+      if (resultCount) resultCount.textContent = label;
+      if (emptyState) emptyState.hidden = visibleCount !== 0;
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeCategory = button.dataset.filterValue ?? 'all';
+        filterButtons.forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle('is-active', isActive);
+          item.setAttribute('aria-pressed', String(isActive));
+        });
+        applyFilters();
+      });
+    });
+
+    searchInput?.addEventListener('input', applyFilters);
+    searchInput?.addEventListener('search', applyFilters);
+    resetButton?.addEventListener('click', () => {
+      activeCategory = 'all';
+      if (searchInput) searchInput.value = '';
+      filterButtons.forEach((button, index) => {
+        const isActive = index === 0;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+      });
+      applyFilters();
+      searchInput?.focus();
+    });
+
+    applyFilters();
+  });
+</script>
+
+<style>
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 40px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--paper);
+  }
+
+  .search-field {
+    display: flex;
+    min-width: 250px;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .search-field svg {
+    width: 19px;
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  .search-field input {
+    width: 100%;
+    min-height: 42px;
+    border: 0;
+    background: transparent;
+    color: var(--ink-strong);
+    font-size: 0.86rem;
+  }
+
+  .search-field input::placeholder {
+    color: var(--ink-soft);
+  }
+
+  .filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 5px;
+  }
+
+  .filter-button {
+    min-height: 40px;
+    padding: 0 11px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 800;
+  }
+
+  .filter-button:hover,
+  .filter-button.is-active {
+    border-color: var(--line-dark);
+    background: var(--white);
+    color: var(--ink-strong);
+  }
+
+  @media (max-width: 900px) {
+    .filter-bar {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .search-field {
+      min-width: 0;
+    }
+
+    .filter-group {
+      justify-content: flex-start;
+    }
+
+    .filter-button {
+      min-height: 42px;
+    }
+  }
+</style>

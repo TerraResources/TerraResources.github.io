@@ -1,0 +1,509 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SourceCard from '../components/SourceCard.astro';
+import ToolCard from '../components/ToolCard.astro';
+import { featuredSources } from '../data/sources';
+import { tools, featuredTools } from '../data/tools';
+
+const readyTools = tools.filter((tool) => tool.status === 'Ready');
+const featuredToolsToShow = featuredTools.length ? featuredTools : readyTools.slice(0, 3);
+const featuredSourcesToShow = featuredSources.slice(0, 6);
+---
+
+<BaseLayout
+  title="Geography workflow hub"
+  description="A practical toolkit and source directory for BSc Geography study at the University of Plymouth."
+>
+  <Header />
+
+  <main id="main-content">
+    <section class="workbench-hero">
+      <div class="container workbench-hero__grid">
+        <div class="workbench-hero__copy reveal">
+          <span class="eyebrow">BSc Geography · Plymouth workflow hub</span>
+          <h1 class="display-title">Get to the good part faster.</h1>
+          <p>
+            Shortcuts, source links, and field templates for the parts of Geography
+            that should not slow you down. Find the tool, get the source, keep your evidence.
+          </p>
+          <div class="workbench-hero__actions">
+            <a class="button button--primary" href="/resources/">
+              Open the toolkit
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a class="button button--secondary" href="/sources/">Find a source</a>
+          </div>
+          <p class="workbench-hero__note">
+            <span class="status-dot" aria-hidden="true"></span>
+            No account · Windows tools marked clearly · always check your module brief
+          </p>
+        </div>
+
+        <div class="start-board reveal reveal--delay">
+          <div class="start-board__header">
+            <span>START HERE</span>
+            <span>QUICK ACTIONS</span>
+          </div>
+          <div class="start-board__list">
+            <a href="/resources/#word-toolkit">
+              <span class="start-board__number">01</span>
+              <span><strong>Format lecture notes</strong><small>Word templates and shortcuts</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a href="/sources/#academic-search">
+              <span class="start-board__number">02</span>
+              <span><strong>Find academic sources</strong><small>Primo, Scholar, Crossref</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a href="/sources/#maps-gis">
+              <span class="start-board__number">03</span>
+              <span><strong>Start a map</strong><small>OSM, QGIS, Ordnance Survey</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a href="/resources/#field-notes">
+              <span class="start-board__number">04</span>
+              <span><strong>Record fieldwork</strong><small>Coordinates and observations</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="start-board__footer">
+            <span>Built for the work between “where?” and “why?”</span>
+            <span>04 / 04</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight quick-actions-section">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Choose a task"
+          title="What are you trying to do?"
+          intro="Start with the job in front of you. You can always come back for context later."
+        />
+        <div class="quick-action-grid">
+          <a class="quick-action quick-action--sage" href="/resources/#word-toolkit">
+            <span class="quick-action__label">Documents</span>
+            <strong>Make Word do the repetitive part.</strong>
+            <span>Lecture headers, headings, shorthand, and date stamps.</span>
+            <b>Open toolkit →</b>
+          </a>
+          <a class="quick-action quick-action--clay" href="/sources/">
+            <span class="quick-action__label">Research</span>
+            <strong>Find a source you can trust.</strong>
+            <span>Search the University catalogue, then widen the search.</span>
+            <b>Open source finder →</b>
+          </a>
+          <a class="quick-action quick-action--sky" href="/resources/#field-notes">
+            <span class="quick-action__label">Fieldwork</span>
+            <strong>Keep observations separate from guesses.</strong>
+            <span>Record locations, accuracy, evidence, and uncertainty.</span>
+            <b>Open templates →</b>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark workbench-tools">
+      <div class="container">
+        <div class="section-heading-row section-heading-row--dark">
+          <SectionHeading
+            eyebrow="Most-used tools"
+            title="The downloads that remove busywork."
+            intro="Small, inspectable files for Windows and Word. Download only the ones you need."
+          />
+          <a class="text-link text-link--light" href="/resources/">See all tools</a>
+        </div>
+        <div class="tool-grid">
+          {featuredToolsToShow.map((tool) => <ToolCard tool={tool} compact />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section source-preview-section">
+      <div class="container">
+        <div class="section-heading-row">
+          <SectionHeading
+            eyebrow="Source finder"
+            title="Start with the right place to look."
+            intro="A short, maintained route through Plymouth Library resources, academic search, UK data, maps, and climate sources."
+          />
+          <a class="text-link" href="/sources/">Browse all sources</a>
+        </div>
+        <div class="source-grid">
+          {featuredSourcesToShow.map((source) => <SourceCard source={source} compact />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight reference-callout-section">
+      <div class="container">
+        <div class="reference-callout">
+          <div>
+            <span class="eyebrow">Referencing</span>
+            <h2>Do not guess the style. Check the brief.</h2>
+            <p>
+              Plymouth’s current guide points to Cite Them Right and shows many Harvard
+              examples, but asks you to check your programme or module guidance.
+            </p>
+          </div>
+          <a class="button button--primary" href="/referencing/">
+            Open the guide
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight home-note-section">
+      <div class="container home-note">
+        <div>
+          <span class="eyebrow">The simple rule</span>
+          <h2>Useful beats impressive.</h2>
+        </div>
+        <p>
+          This is a small working collection, not a replacement for the University’s
+          library, VLE, or module briefs. If a link or tool saves you time, it stays. If
+          it does not, it does not belong here.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .workbench-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 112px 0 104px;
+  }
+
+  .workbench-hero::before {
+    position: absolute;
+    z-index: -1;
+    top: 8%;
+    left: -230px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(185, 212, 181, 0.34);
+    content: '';
+  }
+
+  .workbench-hero__grid {
+    display: grid;
+    align-items: center;
+    gap: clamp(55px, 8vw, 110px);
+    grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
+  }
+
+  .workbench-hero__copy > p:not(.workbench-hero__note) {
+    max-width: 590px;
+    margin-bottom: 30px;
+    color: var(--ink-soft);
+    font-size: clamp(1.08rem, 2vw, 1.28rem);
+  }
+
+  .workbench-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .workbench-hero__note {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 32px 0 0;
+    color: var(--ink-soft);
+    font-size: 0.73rem;
+    font-weight: 650;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--moss);
+    box-shadow: 0 0 0 4px rgba(40, 92, 75, 0.12);
+  }
+
+  .start-board {
+    overflow: hidden;
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .start-board__header,
+  .start-board__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    color: var(--ink-soft);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .start-board__header {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .start-board__list a {
+    display: grid;
+    align-items: center;
+    gap: 15px;
+    padding: 19px 22px;
+    border-bottom: 1px solid var(--line);
+    grid-template-columns: 30px 1fr auto;
+    transition: background 180ms ease, padding 180ms var(--ease);
+  }
+
+  .start-board__list a:hover {
+    background: #f1f4e9;
+    padding-left: 26px;
+  }
+
+  .start-board__number {
+    color: var(--moss);
+    font-size: 0.66rem;
+    font-weight: 800;
+  }
+
+  .start-board__list strong,
+  .start-board__list small {
+    display: block;
+  }
+
+  .start-board__list strong {
+    color: var(--ink-strong);
+    font-size: 0.92rem;
+    font-weight: 750;
+  }
+
+  .start-board__list small {
+    margin-top: 2px;
+    color: var(--ink-soft);
+    font-size: 0.7rem;
+  }
+
+  .start-board__list a > span:last-child {
+    color: var(--moss);
+    font-size: 1.2rem;
+  }
+
+  .start-board__footer {
+    color: var(--ink-soft);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .quick-action-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .quick-action {
+    display: flex;
+    min-height: 250px;
+    padding: 25px;
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-md);
+    flex-direction: column;
+    transition: transform 200ms var(--ease), box-shadow 200ms ease;
+  }
+
+  .quick-action:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-6px);
+  }
+
+  .quick-action--sage { background: #dce7d8; }
+  .quick-action--clay { background: #f0c7b7; }
+  .quick-action--sky { background: #c7e0e4; }
+
+  .quick-action__label {
+    color: var(--moss);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .quick-action strong {
+    max-width: 260px;
+    margin: auto 0 12px;
+    color: var(--ink-strong);
+    font-size: 1.35rem;
+    font-weight: 650;
+    letter-spacing: -0.04em;
+    line-height: 1.12;
+  }
+
+  .quick-action > span:not(.quick-action__label) {
+    color: rgba(23, 52, 46, 0.72);
+    font-size: 0.83rem;
+    line-height: 1.5;
+  }
+
+  .quick-action b {
+    margin-top: 22px;
+    color: var(--ink-strong);
+    font-size: 0.74rem;
+  }
+
+  .workbench-tools {
+    overflow: hidden;
+  }
+
+  .section-heading-row--dark :global(.section-title) {
+    color: white;
+  }
+
+  .section-heading-row--dark :global(.section-intro),
+  .section-heading-row--dark :global(.eyebrow) {
+    color: rgba(255, 255, 255, 0.66);
+  }
+
+  .text-link--light {
+    color: var(--lime);
+  }
+
+  .tool-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .source-preview-section {
+    background: var(--white);
+  }
+
+  .source-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .reference-callout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: clamp(30px, 5vw, 58px);
+    border-radius: var(--radius-lg);
+    background: var(--lime);
+  }
+
+  .reference-callout :global(.eyebrow) {
+    color: var(--moss-dark);
+  }
+
+  .reference-callout h2 {
+    max-width: 700px;
+    margin-bottom: 12px;
+    color: var(--ink-strong);
+    font-size: clamp(2rem, 4vw, 3.7rem);
+    font-weight: 620;
+    letter-spacing: -0.055em;
+    line-height: 1;
+  }
+
+  .reference-callout p {
+    max-width: 670px;
+    margin-bottom: 0;
+    color: rgba(13, 36, 31, 0.72);
+    font-size: 0.95rem;
+  }
+
+  .reference-callout .button {
+    flex: none;
+  }
+
+  .home-note {
+    display: grid;
+    align-items: center;
+    gap: 70px;
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  .home-note h2 {
+    margin-bottom: 0;
+    color: var(--ink-strong);
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 620;
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .home-note p {
+    margin-bottom: 0;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: 900px) {
+    .workbench-hero {
+      padding: 90px 0 82px;
+    }
+
+    .workbench-hero__grid,
+    .home-note {
+      grid-template-columns: 1fr;
+    }
+
+    .start-board {
+      max-width: 620px;
+    }
+
+    .quick-action-grid,
+    .tool-grid,
+    .source-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .workbench-hero {
+      padding: 76px 0 68px;
+    }
+
+    .workbench-hero__actions .button {
+      width: 100%;
+    }
+
+    .workbench-hero__actions,
+    .reference-callout {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .reference-callout {
+      gap: 24px;
+    }
+
+    .quick-action-grid,
+    .tool-grid,
+    .source-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .start-board__list a {
+      padding-inline: 16px;
+    }
+  }
+</style>
