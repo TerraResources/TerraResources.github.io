@@ -16,7 +16,7 @@ const { searchLabel, placeholder, categories, itemName } = Astro.props;
       <circle cx="10.5" cy="10.5" r="6.5" />
       <path d="m15.5 15.5 5 5" />
     </svg>
-    <input type="search" placeholder={placeholder} autocomplete="off" data-filter-search data-item-name={itemName} />
+    <input type="search" placeholder={placeholder} autocomplete="off" aria-keyshortcuts="/" data-filter-search data-item-name={itemName} />
   </label>
 
   <div class="filter-group" role="group" aria-label={`Filter by ${itemName} category`}>
@@ -34,6 +34,7 @@ const { searchLabel, placeholder, categories, itemName } = Astro.props;
     }
   </div>
 
+  <span class="filter-hint" aria-hidden="true">Press <kbd>/</kbd> to search</span>
 </div>
 
 <script>
@@ -92,6 +93,15 @@ const { searchLabel, placeholder, categories, itemName } = Astro.props;
       });
       applyFilters();
       searchInput?.focus();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      const target = event.target;
+      const isTyping = target instanceof HTMLElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName);
+      if (event.key === '/' && !isTyping && !event.metaKey && !event.ctrlKey && !event.altKey) {
+        event.preventDefault();
+        searchInput?.focus();
+      }
     });
 
     applyFilters();
@@ -164,6 +174,27 @@ const { searchLabel, placeholder, categories, itemName } = Astro.props;
     color: var(--ink-strong);
   }
 
+  .filter-hint {
+    flex: none;
+    color: var(--ink-soft);
+    font-size: 0.68rem;
+    white-space: nowrap;
+  }
+
+  .filter-hint kbd {
+    display: inline-grid;
+    min-width: 22px;
+    min-height: 22px;
+    margin-inline: 3px;
+    border: 1px solid var(--line-dark);
+    border-radius: 6px;
+    background: var(--white);
+    color: var(--ink-strong);
+    font-family: inherit;
+    font-size: 0.7rem;
+    place-items: center;
+  }
+
   @media (max-width: 900px) {
     .filter-bar {
       align-items: stretch;
@@ -177,6 +208,10 @@ const { searchLabel, placeholder, categories, itemName } = Astro.props;
 
     .filter-group {
       justify-content: flex-start;
+    }
+
+    .filter-hint {
+      display: none;
     }
 
     .filter-button {

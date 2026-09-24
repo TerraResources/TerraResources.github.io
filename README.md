@@ -88,6 +88,11 @@ the Word toolkit ZIP, and writes a SHA-256 manifest. Keep the three Word scripts
 3. Prefer official or specialist sources and link directly to the service.
 4. Check that the link and any access conditions are still accurate.
 
+## Fast filtering
+
+The tools and source directory can be searched with the visible search field or by
+pressing `/` outside a text field. Filtering happens locally in the browser.
+
 ## Source branding
 
 The source directory prefers each provider’s own favicon and keeps a local copy
